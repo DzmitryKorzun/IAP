@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAP.Web", "IAP\IAP.Web.csproj", "{C219BD44-C3B1-448F-903D-C92558F087DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAP.Web", "IAP\IAP.Web.csproj", "{C219BD44-C3B1-448F-903D-C92558F087DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAP.Services", "IAP.Services\IAP.Services.csproj", "{9959B2F3-59D7-4708-93AE-D4C31E48B23A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAP.Services", "IAP.Services\IAP.Services.csproj", "{9959B2F3-59D7-4708-93AE-D4C31E48B23A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAP.Infrustructure", "IAP.Infrustructure\IAP.Infrustructure.csproj", "{498282F9-AE19-4084-AD9F-BBE0B412C217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAP.Infrustructure", "IAP.Infrustructure\IAP.Infrustructure.csproj", "{498282F9-AE19-4084-AD9F-BBE0B412C217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIP.Tests", "AIP.Tests\AIP.Tests.csproj", "{C803F821-4473-45FA-97B8-840E3FA98934}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIP.Tests", "AIP.Tests\AIP.Tests.csproj", "{C803F821-4473-45FA-97B8-840E3FA98934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
