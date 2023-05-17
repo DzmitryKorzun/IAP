@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAP.Web", "IAP\IAP.Web.csproj", "{C219BD44-C3B1-448F-903D-C92558F087DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{498282F9-AE19-4084-AD9F-BBE0B412C217} = {498282F9-AE19-4084-AD9F-BBE0B412C217}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IAP.Services", "IAP.Services\IAP.Services.csproj", "{9959B2F3-59D7-4708-93AE-D4C31E48B23A}"
 EndProject
