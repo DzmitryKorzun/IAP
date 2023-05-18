@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 
-namespace IAP.Web
+namespace IAP.Web.Controllers
 {
-    [Route("/[controller]")]
+    [Route("/[controller]/[action]")]
     [ApiController]
     public class VController : ControllerBase
     {
@@ -19,6 +19,11 @@ namespace IAP.Web
         public async Task<int> Num()
         {
             return await _userRepository.GetCountOfUser();
+        }
+        [HttpGet]
+        public string? GetCurrentUser()
+        {
+            return User?.Identity?.Name;
         }
     }
 }

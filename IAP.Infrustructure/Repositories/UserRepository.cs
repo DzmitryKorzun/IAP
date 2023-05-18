@@ -1,4 +1,5 @@
 ﻿using IAP.Infrustructure.Interfaces;
+using IAP.Infrustructure.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,17 @@ namespace IAP.Infrustructure.Repositories
         {
             var x = await context.Users.ToArrayAsync();
             return x.Length;
+        }
+
+        public async Task<UserModel> GetUserByEmail(string userEmail)
+        {
+            return await context.Users.FirstOrDefaultAsync(u => u.Email == userEmail);
+        }
+
+        public async Task<int> RegisterNewUser(UserModel newUser)
+        {
+            context.Users.Add(newUser);
+            return await context.SaveChangesAsync();
         }
     }
 }
