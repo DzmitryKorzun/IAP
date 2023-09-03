@@ -1,11 +1,7 @@
-﻿using IAP.Infrustructure.Interfaces;
+﻿using IAP.Infrustructure.Enums;
+using IAP.Infrustructure.Interfaces;
 using IAP.Infrustructure.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IAP.Infrustructure.Repositories
 {
@@ -17,15 +13,43 @@ namespace IAP.Infrustructure.Repositories
             this.context = context;
         }
 
+        public async Task<int> ActivateUser(int id)
+        {
+            var user = await GetUserById(id);
+            if (user == null)
+            {
+                return 0;
+            }
+            user.Status = (int)UserStatusEnum.Active;
+            context.Update(user);
+            return context.SaveChanges();
+        }
+
+        public async Task<int> DisableUser(int id)
+        {
+            var user = await GetUserById(id);
+            if (user == null)
+            {
+                return 0;
+            }
+            user.Status = (int)UserStatusEnum.Disabled;
+            context.Update(user);
+            return context.SaveChanges();
+        }
+
         public async Task<int> GetCountOfUser()
         {
-            var x = await context.Users.ToArrayAsync();
-            return x.Length;
+            return await context.Users.CountAsync();
         }
 
         public async Task<UserModel> GetUserByEmail(string userEmail)
         {
             return await context.Users.FirstOrDefaultAsync(u => u.Email == userEmail);
+        }
+
+        public async Task<UserModel> GetUserById(int id)
+        {
+            return await context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<int> RegisterNewUser(UserModel newUser)

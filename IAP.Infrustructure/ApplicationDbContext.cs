@@ -11,5 +11,6 @@ namespace IAP.Infrustructure
         }
 
         public DbSet<UserModel> Users { get; set; }
+        public DbSet<CompanyModel> Companies { get; set; }
     }
 }

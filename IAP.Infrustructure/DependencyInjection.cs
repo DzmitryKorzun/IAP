@@ -25,6 +25,7 @@ namespace IAP.Infrustructure
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             return services
+                .AddScoped(typeof(IBasicRepository<>), typeof(BasicRepository<>))
                 .AddScoped<IUserRepository, UserRepository>();
         }
     }

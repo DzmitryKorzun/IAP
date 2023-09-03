@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IAP.Services
 {
-    internal static class HashPasswordHelper
+    public static class HashPasswordHelper
     {
         public static string GetPasswordHash(string password)
         {
