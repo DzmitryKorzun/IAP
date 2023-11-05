@@ -1,7 +1,6 @@
 ﻿using IAP.Infrustructure.Models;
 using IAP.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IAP.Web.Controllers
@@ -22,7 +21,7 @@ namespace IAP.Web.Controllers
         public async Task<IActionResult> Auth([FromBody]UserLoggingModel data)
         {
             var isValid = await userService.IsLogging(data);
-            if (isValid)
+            if (isValid.Data)
             {
                 var tokenString = userService.GenerateJwtToken(data.Email, configuration);
                 return Ok(new { Token = tokenString, Message = "Success" });
@@ -40,7 +39,8 @@ namespace IAP.Web.Controllers
         [HttpGet]
         public async Task<int> GetCountOfUser()
         {
-            return await userService.GetCountOfUser();
+            var response = await userService.GetCountOfUser();
+            return response.Data;
         }
     }
 }

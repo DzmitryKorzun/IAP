@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 
@@ -32,8 +31,7 @@ namespace IAP.Services.Implementations
             if (user == null) return new CommonResponse<bool>
             {
                 Status = Infrustructure.Enums.ResponseStatus.NoData,
-                Data = false,
-                Message = 
+                Data = false, 
             };
 
             if (HashPasswordHelper.PasswordComparingWithHash(user.PasswordHash, password))
@@ -51,18 +49,29 @@ namespace IAP.Services.Implementations
         
         public async Task<CommonResponse<int>> RegisterNewUser(UserModel newUser)
         {
-            var 
-            return await userRepository.RegisterNewUser(newUser);
+            var data = await userRepository.RegisterNewUser(newUser);
+            return new CommonResponse<int>
+            {
+                Data = data,
+            };
         }
 
         public async Task<CommonResponse<UserModel>> GetUserById(int id)
         {
-            return await userRepository.GetUserById(id);
+            var data = await userRepository.GetUserById(id);
+            return new CommonResponse<UserModel> 
+            {
+                Data = data,
+            };
         }
 
         public async Task<CommonResponse<int>> GetCountOfUser()
         {
-            return await userRepository.GetCountOfUser();
+            var data = await userRepository.GetCountOfUser();
+            return new CommonResponse<int>
+            {
+                Data = data,
+            };
         }
 
         public async Task<CommonResponse<bool>> IsLogging(UserLoggingModel loggingData)
@@ -72,10 +81,17 @@ namespace IAP.Services.Implementations
             {
                 if (HashPasswordHelper.PasswordComparingWithHash(user.PasswordHash, loggingData.Password))
                 {
-                    return true;
+                    return new CommonResponse<bool>
+                    {
+                        Data = true,
+                    };
+                        
                 }
             }
-            return false;
+            return new CommonResponse<bool>
+            {
+                Data = false,
+            };
         }
 
         public Task<CommonResponse<bool>> Logout(UserLoggingModel user)
@@ -104,9 +120,12 @@ namespace IAP.Services.Implementations
             return tokenHandler.WriteToken(token);
         }
         
-        public Task<CommonResponse<string>> GetUserDetails()
+        public async Task<CommonResponse<string>> GetUserDetails()
         {
-            return _httpContextAccessor.HttpContext.User.Identity.Name;
+            return new CommonResponse<string>
+            {
+                Data = _httpContextAccessor.HttpContext.User.Identity.Name
+            };
         }
     }
 }

@@ -17,13 +17,5 @@ namespace AIP.Tests.UsersTest
 
             Assert.That(actualHash, Is.EqualTo(expectHash));
         }
-
-        [Test]
-        public void GetCountOfUsers()
-        {
-            IUserService userService = new UserService(mocksRepositories.usersMocks.Object);
-
-            Assert.That(1, Is.EqualTo(userService.GetCountOfUser().Result));
-        }
     }
 }

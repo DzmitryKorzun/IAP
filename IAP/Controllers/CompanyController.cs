@@ -30,14 +30,14 @@ namespace IAP.Web.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateCompany()
         {
-            var result = await companyService.CreateNewCompany();
+            //var result = await companyService.CreateNewCompany();
 
-            if (result.Status == Infrustructure.Enums.ResponseStatus.OK)
-            {
-                return Ok(result);
-            }
+            //if (result.Status == Infrustructure.Enums.ResponseStatus.OK)
+            //{
+            //    return Ok(result);
+            //}
 
-            return BadRequest(result.Message);
+            return BadRequest();
         }
     }
 }
