@@ -29,6 +29,18 @@ namespace IAP.Web.Controllers
             return BadRequest("Please pass the valid Username and Password");
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> UserRegistration(UserModel newUser)
+        {
+            var result = await userService.RegisterNewUser(newUser);
+            if (result.Status == Infrustructure.Enums.ResponseStatus.OK)
+            {
+                return Ok();
+            }
+            return BadRequest(result.Message);
+        }
+
         [HttpGet]
         public string? GetCurrentUser()
         {

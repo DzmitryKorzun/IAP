@@ -46,13 +46,33 @@ namespace IAP.Services.Implementations
 
             };
         }
-        
+
         public async Task<CommonResponse<int>> RegisterNewUser(UserModel newUser)
         {
-            var data = await userRepository.RegisterNewUser(newUser);
+            var findedUser = await userRepository.GetUserByEmail(newUser.Email);
+            if (findedUser == null)
+            {
+                var resultNewUserRegistration = await userRepository.RegisterNewUser(newUser);
+                if (resultNewUserRegistration == 1)
+                {
+                    return new CommonResponse<int>
+                    {
+                        Data = resultNewUserRegistration,
+                        Status = Infrustructure.Enums.ResponseStatus.OK
+                    };
+                }
+                return new CommonResponse<int>
+                {
+                    Data = resultNewUserRegistration,
+                    Status = Infrustructure.Enums.ResponseStatus.InternalError,
+                    Message = "Unknown error during registration"
+                };            
+            }
             return new CommonResponse<int>
             {
-                Data = data,
+                Data = 0,
+                Status = Infrustructure.Enums.ResponseStatus.UserAlreadyExists,
+                Message = "A user with this email address already exists"
             };
         }
 
