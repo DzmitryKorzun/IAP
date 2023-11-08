@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'IAP-APP'`, () => {
+  it(`should have as title 'IAP.Client'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('IAP-APP');
+    expect(app.title).toEqual('IAP.Client');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('IAP-APP app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('IAP.Client app is running!');
   });
 });

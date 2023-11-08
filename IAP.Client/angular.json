@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "IAP-APP": {
+    "IAP.Client": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,8 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/iap-app",
-            "index": "src/Pages/index.html",
+            "outputPath": "dist/iap.client",
+            "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -25,7 +25,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/Styles/styles.css"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "IAP-APP:build:production"
+              "browserTarget": "IAP.Client:build:production"
             },
             "development": {
-              "browserTarget": "IAP-APP:build:development"
+              "browserTarget": "IAP.Client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "IAP-APP:build"
+            "browserTarget": "IAP.Client:build"
           }
         },
         "test": {
@@ -87,12 +87,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/Styles/styles.css"
+              "src/styles.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f5ad2633-c78a-4651-9a4d-17e52136ca3a"
   }
 }
